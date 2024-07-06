@@ -89,7 +89,7 @@ echo -e "\\ndefine Device/ys_f3588a
   DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
   DEVICE_DTS := YS-F3588A
   SUPPORTED_DEVICES += ys,f3588a
-  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core kmod-hwmon-pwmfan kmod-thermal kmod-switch-rtl8367b swconfig rkwifi-firmware-ap6275p
+  DEVICE_PACKAGES := kmod-r8125 kmod-nvme kmod-hwmon-pwmfan kmod-thermal kmod-rkwifi-bcmdhd-pcie rkwifi-firmware-ap6275p
 endef
 TARGET_DEVICES += ys_f3588a" >> target/linux/rockchip/image/rk35xx.mk
 
