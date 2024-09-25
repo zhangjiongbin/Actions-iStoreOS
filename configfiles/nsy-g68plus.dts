@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2020 Rockchip Electronics Co., Ltd.
+ *
+ */
+
+/dts-v1/;
+
+#include <dt-bindings/display/rockchip_vop.h>
+#include "rk3568-nsy-g68-plus-core.dtsi"
+#include "rk3568.dtsi"
+#include "rk3568-linux.dtsi"
+
+/ {
+
+    model = "NSY G68 PLUS";
+	compatible = "nsy,g68plus", "rockchip,rk3568";
+
+	aliases {
+		ethernet0 = &gmac0;
+		ethernet1 = &gmac1;
+		mmc0 = &sdhci;
+		mmc1 = &sdmmc0;
+		
+	};
+
+	rtlgsw: rtlgsw@0 {
+		compatible = "realtek,rtl8367b";
+		realtek,mdio = <&mdio0>;
+		mii-bus = <&mdio0>;
+		realtek,id = <29>;
+		phy-id = <29>;
+		cpu_port = <7>;
+		realtek,extif = <7 0 0 1 1 1 1 1 1 2>;
+		status = "okay";
+	};
+	chosen: chosen {
+		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyFIQ0 root=PARTUUID=614e0000-0000 rw rootwait";
+	};
