@@ -85,7 +85,7 @@ sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-fi
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
 # 增加nsy-g68-plus
-echo -e "\\ndefine Device/nsy-g68-plus
+echo -e "\\ndefine Device/nsy-g68plus
 \$(call Device/rk3568)
   DEVICE_VENDOR := NSY
   DEVICE_MODEL := G68PLUS
