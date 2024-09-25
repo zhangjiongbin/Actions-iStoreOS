@@ -84,16 +84,17 @@ sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-fi
 
 sed -i "s/panther,x2|\\\/&\\n	dg,nas|\\\/g" target/linux/rockchip/rk35xx/base-files/etc/board.d/02_network
 
-# 增加YS-F3588A
-echo -e "\\ndefine Device/ys_f3588a
-\$(call Device/rk3588)
-  DEVICE_VENDOR := Rockchip
-  DEVICE_MODEL := RK3588 EVB7 LP4 V10 Board
-  DEVICE_DTS := YS-F3588A
-  SUPPORTED_DEVICES += ys,f3588a
-  DEVICE_PACKAGES := kmod-r8125 kmod-nvme kmod-hwmon-pwmfan kmod-thermal kmod-rkwifi-bcmdhd-pcie rkwifi-firmware-ap6275p
+# 增加nsy-g68-plus
+echo -e "\\ndefine Device/nsy-g68-plus
+\$(call Device/rk3568)
+  DEVICE_VENDOR := NSY
+  DEVICE_MODEL := G68PLUS
+  DEVICE_DTS := nsy-g68plus
+  SUPPORTED_DEVICES += nsy,g68-plus
+  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core kmod-thermal kmod-switch-rtl8306 kmod-switch-rtl8366-smi kmod-switch-rtl8366rb 
+  kmod-switch-rtl8366s kmod-hwmon-pwmfan kmod-leds-pwm kmod-r8125 kmod-r8168 kmod-switch-rtl8367b swconfig
 endef
-TARGET_DEVICES += ys_f3588a" >> target/linux/rockchip/image/rk35xx.mk
+TARGET_DEVICES += nsy-g68plus" >> target/linux/rockchip/image/rk35xx.mk
 
 #增加RK3566-HJQ
 echo -e "\\ndefine Device/rk3566_hjq
@@ -110,7 +111,8 @@ TARGET_DEVICES += rk3566_hjq" >> target/linux/rockchip/image/rk35xx.mk
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se-core.dtsi target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se-core.dtsi
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-firefly-roc-pc-se.dts target/linux/rockchip/dts/rk3568/rk3568-firefly-roc-pc-se.dts
 cp -f $GITHUB_WORKSPACE/configfiles/rk3568-dg-nas.dts target/linux/rockchip/dts/rk3568/rk3568-dg-nas.dts
-cp -f $GITHUB_WORKSPACE/configfiles/YS-F3588A2.dts target/linux/rockchip/dts/rk3588/YS-F3588A2.dts
+cp -f $GITHUB_WORKSPACE/configfiles/nsy-g68plus.dts target/linux/rockchip/dts/rk3568/nsy-g68plus.dts
+cp -f $GITHUB_WORKSPACE/configfiles/nsy-g68plus-core.dtsi target/linux/rockchip/dts/rk3568/nsy-g68plus-core.dtsi
 cp -f $GITHUB_WORKSPACE/configfiles/rk3566-odroid-m1s.dts target/linux/rockchip/dts/rk3568/rk3566-odroid-m1s.dts-roc-pc-se.dts
 
 
